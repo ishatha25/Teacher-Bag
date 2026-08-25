@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>حقيبة شغف الصفية - المساعد الذكي</title>
+    <title>حقيبة شغف الصفية - الإصدار السعودي المتكامل</title>
     <style>
         :root {
-            --primary-color: #4a90e2;
-            --secondary-color: #2ecc71;
-            --bg-color: #f4f7f6;
+            --saudi-green: #006C35;
+            --saudi-gold: #C5A059;
+            --bg: #f4f6f8;
             --card-bg: #ffffff;
-            --text-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --purple-color: #8e44ad;
+            --text: #1f2937;
+            --accent: #e74c3c;
+            --purple: #8e44ad;
         }
 
         * {
@@ -25,47 +25,111 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            min-height: 100vh;
+            background-color: var(--bg);
+            color: var(--text);
+            padding: 15px;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            padding: 15px;
-            padding-top: max(15px, env(safe-area-inset-top));
-            padding-bottom: max(15px, env(safe-area-inset-bottom));
         }
 
-        .shaghaf-container {
+        .app-container {
             width: 100%;
-            max-width: 500px;
+            max-width: 580px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
-        }
-
-        header {
-            text-align: center;
-            background: var(--card-bg);
-            padding: 12px;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
-        h1 {
-            font-size: 1.3rem;
-            color: var(--primary-color);
+            gap: 12px;
         }
 
         .card {
             background: var(--card-bg);
             border-radius: 16px;
             padding: 15px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            width: 100%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--saudi-green);
         }
 
-        /* المؤقت وشريط التعزيز */
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--bg);
+            padding-bottom: 10px;
+        }
+
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .profile-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #e8f5e9;
+            border: 2px solid var(--saudi-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .avatar-picker {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 8px 0;
+        }
+
+        .avatar-option {
+            font-size: 1.8rem;
+            padding: 6px;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            cursor: pointer;
+            background: #f3f4f6;
+        }
+
+        .avatar-option.selected {
+            border-color: var(--saudi-green);
+            background: #e8f5e9;
+        }
+
+        h1 { font-size: 1.3rem; color: var(--saudi-green); }
+        .sub-header { font-size: 0.85rem; color: #555; margin-top: 4px; font-weight: bold; }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            margin-top: 6px;
+            user-select: text;
+            outline: none;
+        }
+
+        input:focus, textarea:focus, select:focus { border-color: var(--saudi-green); }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .btn-saudi { background: var(--saudi-green); }
+        .btn-gold { background: var(--saudi-gold); }
+        .btn-purple { background: var(--purple); }
+        .btn-danger { background: var(--accent); }
+
         .status-bar {
             display: flex;
             justify-content: space-between;
@@ -73,69 +137,84 @@
             font-weight: bold;
         }
 
-        .timer-display {
-            font-size: 0.95rem;
-            color: var(--accent-color);
-            background: #fde8e8;
+        .badge {
             padding: 6px 12px;
             border-radius: 20px;
+            font-size: 0.9rem;
         }
+        .badge-timer { background: #fee2e2; color: var(--accent); }
+        .badge-score { background: #e8f5e9; color: var(--saudi-green); }
 
-        .score-display {
-            font-size: 0.95rem;
-            color: var(--primary-color);
-            background: #eaf2fb;
-            padding: 6px 12px;
-            border-radius: 20px;
-        }
-
-        /* عجلة القرعة */
-        .roulette-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .wheel-container {
-            position: relative;
-            width: 150px;
-            height: 150px;
-        }
-
-        .wheel {
+        /* الجدول الدراسي */
+        .schedule-table {
             width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 4px solid var(--primary-color);
-            position: relative;
-            overflow: hidden;
-            background: conic-gradient(
-                #ff7675 0deg 90deg, 
-                #74b9ff 90deg 180deg, 
-                #55efc4 180deg 270deg, 
-                #ffeaa7 270deg 360deg
-            );
-            transform: translateZ(0);
-            transition: transform 3s cubic-bezier(0.25, 0.1, 0.25, 1);
-            will-change: transform;
+            border-collapse: collapse;
+            margin-top: 8px;
+            font-size: 0.8rem;
+            text-align: center;
         }
 
-        .pointer {
-            position: absolute;
-            top: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-top: 16px solid var(--accent-color);
-            z-index: 10;
+        .schedule-table th, .schedule-table td {
+            border: 1px solid #e5e7eb;
+            padding: 6px 2px;
         }
 
-        /* لوحة الأسئلة */
-        .board-grid {
+        .schedule-table th {
+            background: var(--saudi-green);
+            color: white;
+        }
+
+        .schedule-table td input {
+            padding: 2px;
+            font-size: 0.75rem;
+            text-align: center;
+            border: none;
+            margin: 0;
+        }
+
+        /* التقويم الدراسي */
+        .calendar-item {
+            background: #f9fafb;
+            border-right: 3px solid var(--saudi-gold);
+            padding: 8px;
+            margin-top: 6px;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* القرعة والطلاب */
+        .selected-student {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--saudi-green);
+            text-align: center;
+            min-height: 24px;
+            margin: 8px 0;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .tag {
+            background: #e8f5e9;
+            color: var(--saudi-green);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid var(--saudi-green);
+        }
+
+        .tag span { cursor: pointer; color: var(--accent); font-weight: bold; }
+
+        .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 8px;
@@ -143,104 +222,54 @@
         }
 
         .grid-btn {
-            aspect-ratio: 1.1;
-            background: var(--primary-color);
+            aspect-ratio: 1;
+            background: var(--saudi-green);
             color: white;
             border: none;
             border-radius: 10px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
         }
 
-        .grid-btn.disabled {
-            background: #bdc3c7;
-            color: #7f8c8d;
-            cursor: not-allowed;
-        }
-
-        .action-btn {
-            width: 100%;
-            padding: 10px;
-            background: var(--secondary-color);
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        /* المساعد الذكي للمعلم */
-        .ai-section-title {
-            font-size: 1.1rem;
-            color: var(--purple-color);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        textarea {
-            width: 100%;
-            height: 90px;
-            padding: 10px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-family: inherit;
-            font-size: 0.9rem;
-            resize: none;
-            outline: none;
-            user-select: text;
-        }
-
-        textarea:focus {
-            border-color: var(--purple-color);
-        }
+        .grid-btn.disabled { background: #d1d5db; cursor: not-allowed; }
 
         .ai-options {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 6px;
-            margin: 10px 0;
+            margin: 8px 0;
         }
 
         .ai-opt-btn {
-            background: #f0e6f6;
-            color: var(--purple-color);
-            border: 1px solid var(--purple-color);
-            padding: 8px 4px;
-            border-radius: 8px;
+            background: #f3e8ff;
+            color: var(--purple);
+            border: 1px solid var(--purple);
+            padding: 6px;
+            border-radius: 6px;
             font-size: 0.8rem;
             font-weight: bold;
             cursor: pointer;
         }
 
-        .ai-opt-btn.active {
-            background: var(--purple-color);
-            color: white;
-        }
+        .ai-opt-btn.active { background: var(--purple); color: white; }
 
-        .ai-result-box {
-            background: #fcfaff;
-            border: 1px dashed var(--purple-color);
+        .output-box {
+            background: #f9fafb;
+            border: 1px dashed #9ca3af;
             padding: 10px;
-            border-radius: 10px;
-            font-size: 0.88rem;
-            min-height: 60px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            min-height: 50px;
             white-space: pre-wrap;
             user-select: text;
         }
 
-        /* Modal */
         .modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            inset: 0;
+            background: rgba(0,0,0,0.5);
             justify-content: center;
             align-items: center;
             padding: 20px;
@@ -250,179 +279,373 @@
         .modal-content {
             background: white;
             padding: 20px;
-            border-radius: 16px;
+            border-radius: 12px;
             width: 100%;
             max-width: 350px;
             text-align: center;
-        }
-
-        .modal-btns {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .modal-btns button {
-            flex: 1;
         }
     </style>
 </head>
 <body>
 
-    <div class="shaghaf-container">
-        <header>
-            <h1>حقيبة شغف الصفية 🎓</h1>
-        </header>
-
-        <!-- المؤقت وشريط التعزيز -->
-        <div class="card status-bar">
-            <div class="timer-display">⏱️ الوقت: <span id="timer">30</span>s</div>
-            <div class="score-display">⭐ التعزيز: <span id="score">0</span></div>
-        </div>
-
-        <!-- عجلة القرعة -->
-        <div class="card roulette-section">
-            <div class="wheel-container">
-                <div class="pointer"></div>
-                <div class="wheel" id="wheel"></div>
-            </div>
-            <button class="action-btn" id="spin-btn" onclick="spinWheel()">تدوير عجلة القرعة 🎲</button>
-        </div>
-
-        <!-- لوحة الأرقام -->
+    <div class="app-container">
+        <!-- الهيدر وتخصيص المعلمة -->
         <div class="card">
-            <div style="font-weight: bold; margin-bottom: 5px;">اختر رقم النشاط:</div>
-            <div class="board-grid" id="board"></div>
-        </div>
-
-        <!-- قسم المساعد الذكي للمعلم -->
-        <div class="card">
-            <div class="ai-section-title">🤖 المساعد الذكي للمعلم</div>
-            <textarea id="ai-input" placeholder="أدخل النص أو المحتوى العلمي هنا..."></textarea>
+            <header>
+                <div class="profile-section">
+                    <div class="profile-avatar" id="avatar-display">👩‍🏫</div>
+                    <h1>حقيبة شغف الصفية 🇸🇦</h1>
+                </div>
+                <div class="sub-header" id="teacher-info">المعلم/ـة: غير محدد | المدرسة: غير محددة</div>
+            </header>
             
+            <div id="setup-form" style="margin-top: 10px;">
+                <label style="font-size: 0.85rem; font-weight: bold;">اختر أيقونة الحساب الشخصي:</label>
+                <div class="avatar-picker">
+                    <span class="avatar-option selected" onclick="selectAvatar('👩‍🏫', this)">👩‍🏫</span>
+                    <span class="avatar-option" onclick="selectAvatar('👨‍🏫', this)">👨‍🏫</span>
+                    <span class="avatar-option" onclick="selectAvatar('👩‍💻', this)">👩‍💻</span>
+                    <span class="avatar-option" onclick="selectAvatar('👨‍💻', this)">👨‍💻</span>
+                </div>
+                <input type="text" id="teacher-name-input" placeholder="اسم المعلم / المعلمة">
+                <input type="text" id="school-input" placeholder="اسم المدرسة / المادة">
+                <button class="btn btn-saudi" onclick="saveTeacherInfo()">حفظ وتخصيص الحقيبة 💾</button>
+            </div>
+        </div>
+
+        <!-- المؤقت ونقاط التعزيز -->
+        <div class="card status-bar">
+            <div class="badge badge-timer">⏱️ المؤقت: <span id="timer">30</span>s</div>
+            <div class="badge badge-score">⭐ وسام الفصل: <span id="score">0</span></div>
+        </div>
+
+        <!-- جدول الحصص الأسبوعي التفاعلي -->
+        <div class="card">
+            <div style="font-weight: bold; color: var(--saudi-green);">📅 جدول الحصص الأسبوعي (حفظ تلقائي):</div>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>اليوم</th>
+                        <th>ح1</th>
+                        <th>ح2</th>
+                        <th>ح3</th>
+                        <th>ح4</th>
+                        <th>ح5</th>
+                    </tr>
+                </thead>
+                <tbody id="schedule-body">
+                    <!-- تتولد تلقائياً -->
+                </tbody>
+            </table>
+            <button class="btn btn-gold" onclick="saveSchedule()">حفظ التعديلات على الجدول 💾</button>
+        </div>
+
+        <!-- التقويم الدراسي السعودي مع خيار النطاق الجغرافي -->
+        <div class="card">
+            <div style="font-weight: bold; color: var(--saudi-gold);">🌴 التقويم الدراسي المدرسي:</div>
+            
+            <label style="font-size: 0.85rem; font-weight: bold; margin-top: 6px; display: block;">تحديد النطاق التعليمي:</label>
+            <select id="region-select" onchange="updateCalendar()">
+                <option value="western">المنطقة الغربية (مكة، جدة، الطائف، المدينة...)</option>
+                <option value="others">باقي مناطق المملكة</option>
+            </select>
+
+            <div id="calendar-list" style="margin-top: 8px;">
+                <!-- يتحدث تلقائياً حسب النطاق -->
+            </div>
+        </div>
+
+        <!-- القرعة العشوائية -->
+        <div class="card">
+            <div style="font-weight: bold;">🎲 القرعة العشوائية للطالبات:</div>
+            <div class="selected-student" id="selected-student">اضغطي لاختيار طالبة</div>
+            <button class="btn btn-saudi" onclick="pickRandomStudent()">اختيار طالبة عشوائياً 🎯</button>
+        </div>
+
+        <!-- قائمة الطالبات -->
+        <div class="card">
+            <div style="font-weight: bold;">👥 قائمة طالبات الفصل:</div>
+            <div style="display: flex; gap: 6px;">
+                <input type="text" id="student-name-input" placeholder="اسم الطالبة">
+                <button class="btn btn-saudi" style="width: 30%; margin-top: 6px;" onclick="addStudent()">إضافة</button>
+            </div>
+            <div class="tag-container" id="students-list"></div>
+        </div>
+
+        <!-- شبكة الفعاليات والتحديات -->
+        <div class="card">
+            <div style="font-weight: bold;">🎯 فعاليات وتحديات الأرقام:</div>
+            <div class="grid-3" id="board"></div>
+        </div>
+
+        <!-- المساعد الذكي وإدراج الملفات -->
+        <div class="card">
+            <div style="font-weight: bold; color: var(--purple);">🤖 المساعد الذكي والمحتوى العلمي:</div>
+            
+            <label style="font-size: 0.8rem; margin-top: 6px; display: block;">إدراج ملف نصي (.txt):</label>
+            <input type="file" id="file-input" accept=".txt" onchange="readFile(this)">
+
+            <textarea id="ai-input" placeholder="أدخلي النص أو المحتوى التعليمي هنا..." style="margin-top: 8px;"></textarea>
+
             <div class="ai-options">
-                <button class="ai-opt-btn active" onclick="selectTask('summary', this)">📝 تلخيص</button>
-                <button class="ai-opt-btn" onclick="selectTask('questions', this)">❓ أسئلة</button>
-                <button class="ai-opt-btn" onclick="selectTask('points', this)">📌 نقاط رئيسية</button>
+                <button class="ai-opt-btn active" onclick="setTask('summary', this)">📝 تلخيص</button>
+                <button class="ai-opt-btn" onclick="setTask('questions', this)">❓ أسئلة</button>
+                <button class="ai-opt-btn" onclick="setTask('points', this)">📌 النقاط</button>
             </div>
 
-            <button class="action-btn" style="background: var(--purple-color);" onclick="processContent()">معالجة المحتوى ✨</button>
+            <button class="btn btn-purple" onclick="processAI()">معالجة المحتوى ✨</button>
 
             <div style="margin-top: 10px;">
                 <div style="font-size: 0.85rem; font-weight: bold; margin-bottom: 4px;">النتيجة:</div>
-                <div class="ai-result-box" id="ai-output">النتيجة ستظهر هنا بعد المعالجة...</div>
+                <div class="output-box" id="ai-output">النتيجة تظهر هنا...</div>
             </div>
         </div>
     </div>
 
-    <!-- نافذة السؤال -->
-    <div class="modal" id="question-modal">
+    <!-- نافذة الأسئلة -->
+    <div class="modal" id="modal">
         <div class="modal-content">
-            <h3 id="question-text">السؤال يظهر هنا...</h3>
-            <div class="modal-btns">
-                <button class="action-btn" style="background: var(--secondary-color);" onclick="answer(true)">إجابة صحيحة (+10)</button>
-                <button class="action-btn" style="background: var(--accent-color);" onclick="answer(false)">حاول مرة أخرى</button>
+            <h3 id="modal-text">تحدي النشاط</h3>
+            <div style="display: flex; gap: 8px; margin-top: 15px;">
+                <button class="btn btn-saudi" onclick="addScore(10)">إجابة صحيحة (+10)</button>
+                <button class="btn btn-danger" onclick="closeModal()">إغلاق</button>
             </div>
         </div>
     </div>
 
     <script>
-        let score = 0;
-        let timeLeft = 30;
+        let students = JSON.parse(localStorage.getItem('shaghaf_students')) || ["سارة", "نورة", "ريم", "عائشة"];
+        let score = parseInt(localStorage.getItem('shaghaf_score')) || 0;
+        let teacherInfo = JSON.parse(localStorage.getItem('shaghaf_teacher')) || { name: '', school: '', avatar: '👩‍🏫' };
+        let selectedRegion = localStorage.getItem('shaghaf_region') || 'western';
+        let currentAvatar = teacherInfo.avatar || '👩‍🏫';
+        let timer = 30;
         let timerInterval = null;
-        let isSpinning = false;
-        let currentRotation = 0;
         let selectedTask = 'summary';
 
-        // شبكة الأسئلة
-        const board = document.getElementById('board');
-        const fragment = document.createDocumentFragment();
-        for (let i = 1; i <= 9; i++) {
-            const btn = document.createElement('button');
-            btn.className = 'grid-btn';
-            btn.innerText = i;
-            btn.onclick = () => openQuestion(btn);
-            fragment.appendChild(btn);
-        }
-        board.appendChild(fragment);
+        const days = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس"];
 
-        function startTimer() {
-            clearInterval(timerInterval);
-            timeLeft = 30;
-            document.getElementById('timer').innerText = timeLeft;
-            timerInterval = setInterval(() => {
-                timeLeft--;
-                document.getElementById('timer').innerText = timeLeft;
-                if (timeLeft <= 0) clearInterval(timerInterval);
-            }, 1000);
-        }
+        const calendarData = {
+            western: [
+                { title: "بداية الفصل الدراسي الأول (الغربية)", date: "1448/02/10 هـ" },
+                { title: "إجازة اليوم الوطني", date: "1448/03/12 هـ" },
+                { title: "إجازة نهاية أسبوع مطولة (خاصة بالحج والعمرة)", date: "1448/05/18 هـ" },
+                { title: "إجازة يوم التأسيس", date: "1448/08/14 هـ" },
+                { title: "بداية إجازة نهاية العام الدراسي", date: "1448/12/21 هـ" }
+            ],
+            others: [
+                { title: "بداية الفصل الدراسي الأول (باقي المناطق)", date: "1448/02/10 هـ" },
+                { title: "إجازة اليوم الوطني", date: "1448/03/12 هـ" },
+                { title: "إجازة منتصف العام الدراسي", date: "1448/06/22 هـ" },
+                { title: "إجازة يوم التأسيس", date: "1448/08/14 هـ" },
+                { title: "بداية إجازة نهاية العام الدراسي", date: "1448/12/28 هـ" }
+            ]
+        };
 
-        function spinWheel() {
-            if (isSpinning) return;
-            isSpinning = true;
-            const randomDegree = Math.floor(Math.random() * 360) + 1440;
-            currentRotation += randomDegree;
-            document.getElementById('wheel').style.transform = `rotate(${currentRotation}deg)`;
-            setTimeout(() => {
-                isSpinning = false;
-                startTimer();
-            }, 3000);
-        }
+        window.onload = function() {
+            loadTeacherInfo();
+            renderStudents();
+            buildBoard();
+            buildSchedule();
+            
+            document.getElementById('region-select').value = selectedRegion;
+            updateCalendar();
 
-        function openQuestion(btn) {
-            if (btn.classList.contains('disabled')) return;
-            document.getElementById('question-text').innerText = `تحدي النشاط رقم (${btn.innerText})`;
-            document.getElementById('question-modal').style.display = 'flex';
-            btn.classList.add('disabled');
-            btn.disabled = true;
+            document.getElementById('score').innerText = score;
+        };
+
+        function selectAvatar(emoji, el) {
+            currentAvatar = emoji;
+            document.querySelectorAll('.avatar-option').forEach(opt => opt.classList.remove('selected'));
+            el.classList.add('selected');
         }
 
-        function answer(isCorrect) {
-            document.getElementById('question-modal').style.display = 'none';
-            clearInterval(timerInterval);
-            if (isCorrect) {
-                score += 10;
-                document.getElementById('score').innerText = score;
+        function updateCalendar() {
+            const region = document.getElementById('region-select').value;
+            localStorage.setItem('shaghaf_region', region);
+            
+            const listContainer = document.getElementById('calendar-list');
+            listContainer.innerHTML = '';
+
+            const items = calendarData[region] || calendarData.western;
+            items.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'calendar-item';
+                div.innerHTML = `<span>${item.title}</span><strong>${item.date}</strong>`;
+                listContainer.appendChild(div);
+            });
+        }
+
+        function saveTeacherInfo() {
+            const name = document.getElementById('teacher-name-input').value.trim();
+            const school = document.getElementById('school-input').value.trim();
+            teacherInfo = { name, school, avatar: currentAvatar };
+            localStorage.setItem('shaghaf_teacher', JSON.stringify(teacherInfo));
+            loadTeacherInfo();
+        }
+
+        function loadTeacherInfo() {
+            if (teacherInfo.avatar) {
+                document.getElementById('avatar-display').innerText = teacherInfo.avatar;
+            }
+            if (teacherInfo.name || teacherInfo.school) {
+                document.getElementById('teacher-info').innerText = `المعلم/ـة: ${teacherInfo.name || 'غير محدد'} | المدرسة/المادة: ${teacherInfo.school || 'غير محددة'}`;
+                document.getElementById('setup-form').style.display = 'none';
             }
         }
 
-        // منطق المساعد الذكي
-        function selectTask(task, btn) {
+        function buildSchedule() {
+            const tbody = document.getElementById('schedule-body');
+            tbody.innerHTML = '';
+            const savedSchedule = JSON.parse(localStorage.getItem('shaghaf_schedule')) || {};
+
+            days.forEach(day => {
+                const tr = document.createElement('tr');
+                let rowHTML = `<td><strong>${day}</strong></td>`;
+                for (let h = 1; h <= 5; h++) {
+                    const key = `${day}_${h}`;
+                    const val = savedSchedule[key] || '';
+                    rowHTML += `<td><input type="text" id="${key}" value="${val}"></td>`;
+                }
+                tr.innerHTML = rowHTML;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function saveSchedule() {
+            const schedule = {};
+            days.forEach(day => {
+                for (let h = 1; h <= 5; h++) {
+                    const key = `${day}_${h}`;
+                    schedule[key] = document.getElementById(key).value;
+                }
+            });
+            localStorage.setItem('shaghaf_schedule', JSON.stringify(schedule));
+            alert('تم حفظ جدول الحصص بنجاح في جهازك 💾');
+        }
+
+        function renderStudents() {
+            const list = document.getElementById('students-list');
+            list.innerHTML = '';
+            students.forEach((std, index) => {
+                const tag = document.createElement('div');
+                tag.className = 'tag';
+                tag.innerHTML = `${std} <span onclick="removeStudent(${index})">&times;</span>`;
+                list.appendChild(tag);
+            });
+            localStorage.setItem('shaghaf_students', JSON.stringify(students));
+        }
+
+        function addStudent() {
+            const input = document.getElementById('student-name-input');
+            if (input.value.trim()) {
+                students.push(input.value.trim());
+                input.value = '';
+                renderStudents();
+            }
+        }
+
+        function removeStudent(index) {
+            students.splice(index, 1);
+            renderStudents();
+        }
+
+        function pickRandomStudent() {
+            if (students.length === 0) {
+                document.getElementById('selected-student').innerText = "يرجى إضافة طالبات أولاً";
+                return;
+            }
+            let count = 0;
+            const interval = setInterval(() => {
+                const rand = Math.floor(Math.random() * students.length);
+                document.getElementById('selected-student').innerText = students[rand];
+                count++;
+                if (count > 10) {
+                    clearInterval(interval);
+                    startTimer();
+                }
+            }, 100);
+        }
+
+        function startTimer() {
+            clearInterval(timerInterval);
+            timer = 30;
+            document.getElementById('timer').innerText = timer;
+            timerInterval = setInterval(() => {
+                timer--;
+                document.getElementById('timer').innerText = timer;
+                if (timer <= 0) clearInterval(timerInterval);
+            }, 1000);
+        }
+
+        function buildBoard() {
+            const board = document.getElementById('board');
+            for (let i = 1; i <= 9; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'grid-btn';
+                btn.innerText = i;
+                btn.onclick = () => openChallenge(btn, i);
+                board.appendChild(btn);
+            }
+        }
+
+        function openChallenge(btn, num) {
+            if (btn.classList.contains('disabled')) return;
+            document.getElementById('modal-text').innerText = `تحدي النشاط رقم (${num})`;
+            document.getElementById('modal').style.display = 'flex';
+            btn.classList.add('disabled');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function addScore(pt) {
+            score += pt;
+            document.getElementById('score').innerText = score;
+            localStorage.setItem('shaghaf_score', score);
+            closeModal();
+        }
+
+        function readFile(input) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('ai-input').value = e.target.result;
+                };
+                reader.readAsText(file);
+            }
+        }
+
+        function setTask(task, btn) {
             selectedTask = task;
             document.querySelectorAll('.ai-opt-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
         }
 
-        function processContent() {
+        function processAI() {
             const text = document.getElementById('ai-input').value.trim();
-            const output = document.getElementById('ai-output');
-
+            const out = document.getElementById('ai-output');
             if (!text) {
-                output.innerText = "⚠️ يرجى كتابة أو لصق المحتوى العلمي أولاً.";
+                out.innerText = "⚠️ يرجى إدخال نص أو رفع ملف أولاً.";
                 return;
             }
-
-            output.innerText = "⏳ جاري معالجة النص...";
-
+            out.innerText = "⏳ جاري المعالجة...";
             setTimeout(() => {
-                const sentences = text.split(/[.،\n]/).filter(s => s.trim().length > 0);
-
+                const lines = text.split(/[.\n]/).filter(l => l.trim().length > 0);
                 if (selectedTask === 'summary') {
-                    output.innerText = "📌 الملخص:\n" + sentences.slice(0, Math.max(1, Math.ceil(sentences.length / 2))).join(".\n") + ".";
+                    out.innerText = "📌 الملخص:\n" + lines.slice(0, Math.ceil(lines.length / 2)).join(".\n") + ".";
                 } else if (selectedTask === 'questions') {
-                    let questions = "❓ الأسئلة المقترحة:\n";
-                    sentences.slice(0, 3).forEach((s, i) => {
-                        questions += `${i + 1}. ما أهمية: (${s.trim()})؟\n`;
-                    });
-                    output.innerText = questions;
-                } else if (selectedTask === 'points') {
-                    let points = "🔹 النقاط الرئيسية:\n";
-                    sentences.forEach((s) => {
-                        points += `• ${s.trim()}\n`;
-                    });
-                    output.innerText = points;
+                    let q = "❓ الأسئلة المقترحة:\n";
+                    lines.slice(0, 3).forEach((l, i) => q += `${i+1}. س: وضح أبعاد/معنى: (${l.trim()})؟\n`);
+                    out.innerText = q;
+                } else {
+                    let p = "🔹 النقاط الرئيسية:\n";
+                    lines.forEach(l => p += `• ${l.trim()}\n`);
+                    out.innerText = p;
                 }
-            }, 500);
+            }, 400);
         }
     </script>
 </body>
