@@ -1,652 +1,763 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>حقيبة شغف الصفية - الإصدار السعودي المتكامل</title>
-    <style>
-        :root {
-            --saudi-green: #006C35;
-            --saudi-gold: #C5A059;
-            --bg: #f4f6f8;
-            --card-bg: #ffffff;
-            --text: #1f2937;
-            --accent: #e74c3c;
-            --purple: #8e44ad;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>حقيبة شغف الصفية — الإصدار الأساسي 🇸🇦</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#FF6FA0; --purple:#8B5FBF; --turq:#20C4B6; --yellow:#FFC93C; --green:#06A77D;
+    --saudi-green:#006C35; --gold:#C5A059;
+    --bg1:#FFF3FA; --bg2:#EAFBF7;
+    --ink:#33314B; --ink-soft:#6B698A;
+    --card:#FFFFFF; --line:#F0E9F5;
+    --radius:20px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent;}
+  body{
+    font-family:'Tajawal', sans-serif;
+    background:
+      radial-gradient(circle at 8% 5%, rgba(255,111,160,0.12) 0, transparent 38%),
+      radial-gradient(circle at 92% 12%, rgba(32,196,182,0.14) 0, transparent 40%),
+      radial-gradient(circle at 15% 95%, rgba(139,95,191,0.10) 0, transparent 40%),
+      linear-gradient(160deg, var(--bg1), var(--bg2));
+    color:var(--ink);
+    padding:16px 12px 60px;
+    min-height:100vh;
+  }
+  .app{max-width:640px; margin:0 auto; display:flex; flex-direction:column; gap:14px;}
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-        }
+  .card{
+    background:var(--card); border-radius:var(--radius); padding:18px;
+    box-shadow:0 10px 28px rgba(139,95,191,0.10);
+    border:1px solid var(--line);
+  }
+  .card-title{
+    font-family:'Baloo Bhaijaan 2', sans-serif; font-weight:700; font-size:17px; margin-bottom:10px;
+    display:flex; align-items:center; gap:6px;
+  }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-        }
+  /* Header / profile */
+  header.card{text-align:center; background:linear-gradient(135deg,#fff, #FFF7FB);}
+  .profile-avatar{
+    width:76px; height:76px; border-radius:50%; margin:0 auto 8px;
+    background:linear-gradient(135deg, var(--pink), var(--purple));
+    display:flex; align-items:center; justify-content:center; font-size:2.3rem;
+    box-shadow:0 6px 16px rgba(139,95,191,0.35); border:3px solid #fff;
+  }
+  .avatar-picker{display:flex; gap:10px; justify-content:center; margin:10px 0;}
+  .avatar-option{
+    font-size:1.6rem; padding:8px; border-radius:50%; cursor:pointer; background:var(--bg2);
+    border:2px solid transparent; transition:.15s;
+  }
+  .avatar-option.selected{border-color:var(--purple); background:#F1E9FB; transform:scale(1.08);}
+  h1{font-family:'Baloo Bhaijaan 2', sans-serif; font-size:1.5rem; background:linear-gradient(90deg,var(--pink),var(--purple)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .sub-header{font-size:0.85rem; color:var(--ink-soft); margin-top:4px; font-weight:700;}
 
-        .app-container {
-            width: 100%;
-            max-width: 580px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+  input, textarea, select{
+    width:100%; padding:11px 12px; border:1.5px solid var(--line); border-radius:12px;
+    font-family:inherit; font-size:0.9rem; margin-top:8px; outline:none; background:#FBFAFE; color:var(--ink);
+  }
+  input:focus, textarea:focus, select:focus{border-color:var(--purple);}
 
-        .card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--saudi-green);
-        }
+  .btn{
+    width:100%; padding:12px; border:none; border-radius:12px; font-size:0.95rem;
+    font-weight:800; color:white; cursor:pointer; margin-top:8px; font-family:'Tajawal',sans-serif;
+    transition:transform .12s ease, opacity .2s ease;
+  }
+  .btn:active{transform:scale(0.97);}
+  .btn:disabled{opacity:.55; cursor:not-allowed; transform:none;}
+  .btn-pink{background:linear-gradient(135deg,var(--pink),#ff8fb8);}
+  .btn-purple{background:linear-gradient(135deg,var(--purple),#a17fd6);}
+  .btn-turq{background:linear-gradient(135deg,var(--turq),#48d8cb);}
+  .btn-gold{background:linear-gradient(135deg,var(--gold),#dab876);}
+  .btn-green{background:linear-gradient(135deg,var(--green),#0ec28f);}
+  .btn-danger{background:linear-gradient(135deg,#ef4444,#f87171);}
+  .btn-outline{background:#fff; color:var(--purple); border:2px solid var(--purple);}
 
-        header {
-            text-align: center;
-            border-bottom: 2px solid var(--bg);
-            padding-bottom: 10px;
-        }
+  /* Status bar */
+  .status-bar{display:flex; gap:10px; justify-content:space-between; padding:14px 16px;}
+  .badge{padding:8px 14px; border-radius:999px; font-weight:800; font-size:0.9rem; display:flex; align-items:center; gap:6px;}
+  .badge-timer{background:#FFE9EF; color:var(--pink);}
+  .badge-score{background:#EAFBF3; color:var(--green); position:relative;}
+  .score-burst{
+    position:absolute; top:-18px; left:50%; transform:translateX(-50%); font-size:0.8rem; font-weight:900;
+    color:var(--pink); opacity:0; pointer-events:none;
+  }
+  .score-burst.play{animation:burst 0.9s ease forwards;}
+  @keyframes burst{0%{opacity:0; transform:translate(-50%,0);} 30%{opacity:1;} 100%{opacity:0; transform:translate(-50%,-24px);}}
 
-        .profile-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 8px;
-        }
+  /* Wheel */
+  .wheel-zone{display:flex; flex-direction:column; align-items:center; gap:14px; margin-top:6px;}
+  .wheel-holder{position:relative; width:min(70vw,240px); height:min(70vw,240px);}
+  .wheel-pointer{
+    position:absolute; top:-6px; left:50%; transform:translateX(-50%); z-index:5;
+    width:0; height:0; border-left:13px solid transparent; border-right:13px solid transparent;
+    border-top:20px solid var(--pink); filter:drop-shadow(0 2px 2px rgba(0,0,0,.25));
+  }
+  .wheel{
+    width:100%; height:100%; border-radius:50%; border:6px solid #fff;
+    box-shadow:0 8px 22px rgba(139,95,191,.35); transition:transform 3.6s cubic-bezier(.17,.67,.16,.99);
+    position:relative;
+  }
+  .wheel span.label{position:absolute; left:50%; top:50%; font-size:11px; font-weight:800; color:#fff; text-shadow:0 1px 2px rgba(0,0,0,.35); transform-origin:0 0;}
+  .wheel-center{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:24px; height:24px; border-radius:50%; background:#fff; border:4px solid var(--purple); z-index:4;}
+  .selected-student{
+    font-family:'Baloo Bhaijaan 2', sans-serif; font-size:1.2rem; font-weight:700; color:var(--purple);
+    text-align:center; min-height:30px; padding:10px 16px; border-radius:14px;
+    background:#F6F1FC; border:2px dashed var(--purple); width:100%;
+  }
 
-        .profile-avatar {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: #e8f5e9;
-            border: 2px solid var(--saudi-green);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
+  /* Games grid */
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:6px;}
+  .game-card-btn{
+    background:#fff; border:2px solid var(--line); border-radius:16px; padding:14px 6px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px;
+    cursor:pointer; box-shadow:0 4px 10px rgba(139,95,191,0.08); transition:.15s;
+  }
+  .game-card-btn:active{transform:scale(0.94);}
+  .game-card-btn .icon{font-size:1.9rem;}
+  .game-card-btn .title{font-size:0.72rem; font-weight:800; text-align:center;}
+  .game-card-btn.c0{border-color:var(--pink);} .game-card-btn.c1{border-color:var(--turq);}
+  .game-card-btn.c2{border-color:var(--yellow);} .game-card-btn.c3{border-color:var(--purple);}
 
-        .avatar-picker {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin: 8px 0;
-        }
+  /* Modal */
+  .modal{display:none; position:fixed; inset:0; background:rgba(51,49,75,0.55); backdrop-filter:blur(2px); justify-content:center; align-items:center; padding:16px; z-index:100;}
+  .modal-content{background:#fff; padding:22px; border-radius:22px; width:100%; max-width:440px; text-align:center; box-shadow:0 16px 40px rgba(0,0,0,0.25); position:relative;}
+  .game-screen{display:flex; flex-direction:column; gap:12px; align-items:center;}
+  .game-title{font-family:'Baloo Bhaijaan 2', sans-serif; font-size:1.15rem; color:var(--purple);}
+  .game-display{
+    width:100%; min-height:110px; background:var(--bg2); border:2px dashed #cfe9e4; border-radius:14px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; padding:14px; font-size:1.05rem; font-weight:700; gap:6px;
+  }
+  .traffic-light{display:flex; gap:16px; margin:8px 0;}
+  .light-btn{width:64px; height:64px; border-radius:50%; border:none; font-size:1.7rem; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,.15);}
+  .modal-actions{display:flex; gap:8px; margin-top:16px;}
 
-        .avatar-option {
-            font-size: 1.8rem;
-            padding: 6px;
-            border: 2px solid transparent;
-            border-radius: 50%;
-            cursor: pointer;
-            background: #f3f4f6;
-        }
+  /* Tags */
+  .tag-container{display:flex; flex-wrap:wrap; gap:7px; margin-top:10px;}
+  .tag{
+    padding:5px 12px; border-radius:14px; font-size:0.85rem; display:flex; align-items:center; gap:6px;
+    font-weight:700; color:#fff;
+  }
+  .tag span{cursor:pointer; font-weight:900; opacity:.85;}
 
-        .avatar-option.selected {
-            border-color: var(--saudi-green);
-            background: #e8f5e9;
-        }
+  /* Schedule */
+  .schedule-table{width:100%; border-collapse:collapse; margin-top:8px; font-size:0.78rem; text-align:center;}
+  .schedule-table th, .schedule-table td{border:1px solid var(--line); padding:6px 2px;}
+  .schedule-table th{background:linear-gradient(135deg,var(--purple),#a17fd6); color:#fff; font-family:'Baloo Bhaijaan 2',sans-serif;}
+  .schedule-table td input{padding:3px; font-size:0.72rem; text-align:center; margin:0; border:none; background:transparent;}
 
-        h1 { font-size: 1.3rem; color: var(--saudi-green); }
-        .sub-header { font-size: 0.85rem; color: #555; margin-top: 4px; font-weight: bold; }
+  /* Calendar */
+  .calendar-item{background:var(--bg2); border-right:4px solid var(--gold); padding:9px 12px; margin-top:7px; font-size:0.85rem; display:flex; justify-content:space-between; border-radius:8px;}
+  .calendar-note{font-size:0.72rem; color:var(--ink-soft); margin-top:8px;}
 
-        input, textarea, select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 0.9rem;
-            margin-top: 6px;
-            user-select: text;
-            outline: none;
-        }
+  /* AI */
+  .ai-tag{display:inline-flex; align-items:center; gap:5px; background:linear-gradient(135deg,var(--purple),var(--pink)); color:#fff; font-size:11px; font-weight:900; padding:4px 12px; border-radius:999px; margin-bottom:8px;}
+  .source-toggle{display:flex; gap:8px; margin:8px 0;}
+  .source-toggle button{flex:1; background:var(--bg2); border:1.5px solid var(--line); border-radius:10px; padding:8px; font-size:12.5px; font-weight:800; cursor:pointer; color:var(--ink);}
+  .source-toggle button.active{background:var(--purple); color:#fff; border-color:var(--purple);}
+  .upload-row{display:flex; align-items:center; gap:10px; margin-top:6px;}
+  .upload-row label{background:var(--turq); color:#fff; font-weight:800; font-size:12.5px; padding:8px 14px; border-radius:999px; cursor:pointer; margin:0;}
+  .upload-row input[type=file]{display:none;}
+  .file-name{font-size:12px; color:var(--ink-soft);}
+  .ai-options{display:flex; gap:6px; margin:10px 0; flex-wrap:wrap;}
+  .ai-options button{flex:1; min-width:90px; font-size:0.78rem; padding:8px 4px;}
+  .output-box{
+    background:var(--bg2); border:1.5px dashed var(--turq); padding:12px; border-radius:12px;
+    font-size:0.85rem; min-height:50px; white-space:pre-wrap; line-height:1.8;
+  }
+  .status-msg{font-size:12.5px; margin-top:8px; font-weight:700;}
+  .status-msg.error{color:#ef4444;}
+  .status-msg.ok{color:var(--green);}
 
-        input:focus, textarea:focus, select:focus { border-color: var(--saudi-green); }
-
-        .btn {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: bold;
-            color: white;
-            cursor: pointer;
-            margin-top: 8px;
-        }
-
-        .btn-saudi { background: var(--saudi-green); }
-        .btn-gold { background: var(--saudi-gold); }
-        .btn-purple { background: var(--purple); }
-        .btn-danger { background: var(--accent); }
-
-        .status-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: bold;
-        }
-
-        .badge {
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-        .badge-timer { background: #fee2e2; color: var(--accent); }
-        .badge-score { background: #e8f5e9; color: var(--saudi-green); }
-
-        /* الجدول الدراسي */
-        .schedule-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 8px;
-            font-size: 0.8rem;
-            text-align: center;
-        }
-
-        .schedule-table th, .schedule-table td {
-            border: 1px solid #e5e7eb;
-            padding: 6px 2px;
-        }
-
-        .schedule-table th {
-            background: var(--saudi-green);
-            color: white;
-        }
-
-        .schedule-table td input {
-            padding: 2px;
-            font-size: 0.75rem;
-            text-align: center;
-            border: none;
-            margin: 0;
-        }
-
-        /* التقويم الدراسي */
-        .calendar-item {
-            background: #f9fafb;
-            border-right: 3px solid var(--saudi-gold);
-            padding: 8px;
-            margin-top: 6px;
-            font-size: 0.85rem;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        /* القرعة والطلاب */
-        .selected-student {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--saudi-green);
-            text-align: center;
-            min-height: 24px;
-            margin: 8px 0;
-        }
-
-        .tag-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 8px;
-        }
-
-        .tag {
-            background: #e8f5e9;
-            color: var(--saudi-green);
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            border: 1px solid var(--saudi-green);
-        }
-
-        .tag span { cursor: pointer; color: var(--accent); font-weight: bold; }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-top: 8px;
-        }
-
-        .grid-btn {
-            aspect-ratio: 1;
-            background: var(--saudi-green);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .grid-btn.disabled { background: #d1d5db; cursor: not-allowed; }
-
-        .ai-options {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 6px;
-            margin: 8px 0;
-        }
-
-        .ai-opt-btn {
-            background: #f3e8ff;
-            color: var(--purple);
-            border: 1px solid var(--purple);
-            padding: 6px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .ai-opt-btn.active { background: var(--purple); color: white; }
-
-        .output-box {
-            background: #f9fafb;
-            border: 1px dashed #9ca3af;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            min-height: 50px;
-            white-space: pre-wrap;
-            user-select: text;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.5);
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            z-index: 100;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            width: 100%;
-            max-width: 350px;
-            text-align: center;
-        }
-    </style>
+  footer{text-align:center; margin-top:10px; font-size:12px; color:var(--ink-soft);}
+</style>
 </head>
 <body>
+<div class="app">
 
-    <div class="app-container">
-        <!-- الهيدر وتخصيص المعلمة -->
-        <div class="card">
-            <header>
-                <div class="profile-section">
-                    <div class="profile-avatar" id="avatar-display">👩‍🏫</div>
-                    <h1>حقيبة شغف الصفية 🇸🇦</h1>
-                </div>
-                <div class="sub-header" id="teacher-info">المعلم/ـة: غير محدد | المدرسة: غير محددة</div>
-            </header>
-            
-            <div id="setup-form" style="margin-top: 10px;">
-                <label style="font-size: 0.85rem; font-weight: bold;">اختر أيقونة الحساب الشخصي:</label>
-                <div class="avatar-picker">
-                    <span class="avatar-option selected" onclick="selectAvatar('👩‍🏫', this)">👩‍🏫</span>
-                    <span class="avatar-option" onclick="selectAvatar('👨‍🏫', this)">👨‍🏫</span>
-                    <span class="avatar-option" onclick="selectAvatar('👩‍💻', this)">👩‍💻</span>
-                    <span class="avatar-option" onclick="selectAvatar('👨‍💻', this)">👨‍💻</span>
-                </div>
-                <input type="text" id="teacher-name-input" placeholder="اسم المعلم / المعلمة">
-                <input type="text" id="school-input" placeholder="اسم المدرسة / المادة">
-                <button class="btn btn-saudi" onclick="saveTeacherInfo()">حفظ وتخصيص الحقيبة 💾</button>
-            </div>
-        </div>
+  <!-- الهيدر -->
+  <header class="card">
+    <div class="profile-avatar" id="avatar-display">👩‍🏫</div>
+    <h1>حقيبة شغف الصفية 🇸🇦</h1>
+    <div class="sub-header" id="teacher-info">المعلم/ـة: غير محدد | المدرسة: غير محددة</div>
 
-        <!-- المؤقت ونقاط التعزيز -->
-        <div class="card status-bar">
-            <div class="badge badge-timer">⏱️ المؤقت: <span id="timer">30</span>s</div>
-            <div class="badge badge-score">⭐ وسام الفصل: <span id="score">0</span></div>
-        </div>
+    <div id="setup-form" style="margin-top:12px;">
+      <label style="font-size:0.82rem; font-weight:800; display:block;">اختاري صورة الحساب:</label>
+      <div class="avatar-picker">
+        <span class="avatar-option selected" onclick="selectAvatar('👩‍🏫', this)">👩‍🏫</span>
+        <span class="avatar-option" onclick="selectAvatar('🧕')">🧕</span>
+        <span class="avatar-option" onclick="selectAvatar('👩‍💻', this)">👩‍💻</span>
+        <span class="avatar-option" onclick="selectAvatar('🌸', this)">🌸</span>
+      </div>
+      <input type="text" id="teacher-name-input" placeholder="اسم المعلمة">
+      <input type="text" id="school-input" placeholder="اسم المدرسة / المادة">
+      <button class="btn btn-pink" onclick="saveTeacherInfo()">حفظ وتخصيص الحقيبة 💾</button>
+    </div>
+  </header>
 
-        <!-- جدول الحصص الأسبوعي التفاعلي -->
-        <div class="card">
-            <div style="font-weight: bold; color: var(--saudi-green);">📅 جدول الحصص الأسبوعي (حفظ تلقائي):</div>
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th>اليوم</th>
-                        <th>ح1</th>
-                        <th>ح2</th>
-                        <th>ح3</th>
-                        <th>ح4</th>
-                        <th>ح5</th>
-                    </tr>
-                </thead>
-                <tbody id="schedule-body">
-                    <!-- تتولد تلقائياً -->
-                </tbody>
-            </table>
-            <button class="btn btn-gold" onclick="saveSchedule()">حفظ التعديلات على الجدول 💾</button>
-        </div>
+  <!-- المؤقت والنقاط -->
+  <div class="card status-bar">
+    <div class="badge badge-timer">⏱️ <span id="timer">30</span>ث</div>
+    <div class="badge badge-score">⭐ وسام الفصل: <span id="score">0</span><span class="score-burst" id="scoreBurst">+10</span></div>
+  </div>
 
-        <!-- التقويم الدراسي السعودي مع خيار النطاق الجغرافي -->
-        <div class="card">
-            <div style="font-weight: bold; color: var(--saudi-gold);">🌴 التقويم الدراسي المدرسي:</div>
-            
-            <label style="font-size: 0.85rem; font-weight: bold; margin-top: 6px; display: block;">تحديد النطاق التعليمي:</label>
-            <select id="region-select" onchange="updateCalendar()">
-                <option value="western">المنطقة الغربية (مكة، جدة، الطائف، المدينة...)</option>
-                <option value="others">باقي مناطق المملكة</option>
-            </select>
+  <!-- عجلة الاختيار -->
+  <div class="card">
+    <div class="card-title">🎲 عجلة اختيار الطالبات</div>
+    <div class="wheel-zone">
+      <div class="wheel-holder">
+        <div class="wheel-pointer"></div>
+        <div class="wheel" id="wheel"></div>
+        <div class="wheel-center"></div>
+      </div>
+      <div class="selected-student" id="selected-student">اضغطي "تدوير" لاختيار طالبة 🎯</div>
+      <button class="btn btn-purple" onclick="spinMainWheel()">تدوير العجلة 🎡</button>
+    </div>
+  </div>
 
-            <div id="calendar-list" style="margin-top: 8px;">
-                <!-- يتحدث تلقائياً حسب النطاق -->
-            </div>
-        </div>
+  <!-- الألعاب -->
+  <div class="card">
+    <div class="card-title">🎮 مركز الألعاب التفاعلية</div>
+    <div class="grid-3" id="games-board"></div>
+  </div>
 
-        <!-- القرعة العشوائية -->
-        <div class="card">
-            <div style="font-weight: bold;">🎲 القرعة العشوائية للطالبات:</div>
-            <div class="selected-student" id="selected-student">اضغطي لاختيار طالبة</div>
-            <button class="btn btn-saudi" onclick="pickRandomStudent()">اختيار طالبة عشوائياً 🎯</button>
-        </div>
+  <!-- الطالبات -->
+  <div class="card">
+    <div class="card-title">👥 قائمة الطالبات</div>
+    <div style="display:flex; gap:6px;">
+      <input type="text" id="student-name-input" placeholder="اسم الطالبة" onkeydown="if(event.key==='Enter')addStudent()">
+      <button class="btn btn-turq" style="width:32%; margin-top:8px;" onclick="addStudent()">إضافة</button>
+    </div>
+    <div class="tag-container" id="students-list"></div>
+  </div>
 
-        <!-- قائمة الطالبات -->
-        <div class="card">
-            <div style="font-weight: bold;">👥 قائمة طالبات الفصل:</div>
-            <div style="display: flex; gap: 6px;">
-                <input type="text" id="student-name-input" placeholder="اسم الطالبة">
-                <button class="btn btn-saudi" style="width: 30%; margin-top: 6px;" onclick="addStudent()">إضافة</button>
-            </div>
-            <div class="tag-container" id="students-list"></div>
-        </div>
+  <!-- الجدول -->
+  <div class="card">
+    <div class="card-title">📅 جدول الحصص الأسبوعي</div>
+    <table class="schedule-table">
+      <thead><tr><th>اليوم</th><th>ح1</th><th>ح2</th><th>ح3</th><th>ح4</th><th>ح5</th></tr></thead>
+      <tbody id="schedule-body"></tbody>
+    </table>
+    <button class="btn btn-gold" onclick="saveSchedule()">حفظ الجدول 💾</button>
+  </div>
 
-        <!-- شبكة الفعاليات والتحديات -->
-        <div class="card">
-            <div style="font-weight: bold;">🎯 فعاليات وتحديات الأرقام:</div>
-            <div class="grid-3" id="board"></div>
-        </div>
+  <!-- التقويم -->
+  <div class="card">
+    <div class="card-title" style="color:var(--gold);">🌴 التقويم الدراسي</div>
+    <select id="region-select" onchange="updateCalendar()">
+      <option value="western">المنطقة الغربية (مكة، جدة، الطائف، المدينة...)</option>
+      <option value="others">باقي مناطق المملكة</option>
+    </select>
+    <div id="calendar-list"></div>
+    <div class="calendar-note">📌 التواريخ تقريبية — يُرجى مراجعة التقويم الرسمي لوزارة التعليم لتأكيد الدقة.</div>
+  </div>
 
-        <!-- المساعد الذكي وإدراج الملفات -->
-        <div class="card">
-            <div style="font-weight: bold; color: var(--purple);">🤖 المساعد الذكي والمحتوى العلمي:</div>
-            
-            <label style="font-size: 0.8rem; margin-top: 6px; display: block;">إدراج ملف نصي (.txt):</label>
-            <input type="file" id="file-input" accept=".txt" onchange="readFile(this)">
+  <!-- المساعد الذكي -->
+  <div class="card">
+    <div class="card-title">🛠️ مساعد المحتوى</div>
+    <div style="font-size:12px; color:var(--ink-soft); margin-bottom:6px;">يعمل فورًا بدون إنترنت أو إعداد — الصقي نص الدرس وحوّليه لملخص أو أسئلة أو بنك أسئلة للألعاب</div>
 
-            <textarea id="ai-input" placeholder="أدخلي النص أو المحتوى التعليمي هنا..." style="margin-top: 8px;"></textarea>
-
-            <div class="ai-options">
-                <button class="ai-opt-btn active" onclick="setTask('summary', this)">📝 تلخيص</button>
-                <button class="ai-opt-btn" onclick="setTask('questions', this)">❓ أسئلة</button>
-                <button class="ai-opt-btn" onclick="setTask('points', this)">📌 النقاط</button>
-            </div>
-
-            <button class="btn btn-purple" onclick="processAI()">معالجة المحتوى ✨</button>
-
-            <div style="margin-top: 10px;">
-                <div style="font-size: 0.85rem; font-weight: bold; margin-bottom: 4px;">النتيجة:</div>
-                <div class="output-box" id="ai-output">النتيجة تظهر هنا...</div>
-            </div>
-        </div>
+    <textarea id="content-input" rows="5" placeholder="أدخلي محتوى الدرس هنا..."></textarea>
+    <div class="upload-row">
+      <label>📎 رفع ملف نصي<input type="file" id="txt-input" accept=".txt"></label>
+      <label>📄 رفع PDF<input type="file" id="pdf-input" accept="application/pdf"></label>
+      <span class="file-name" id="fileName"></span>
     </div>
 
-    <!-- نافذة الأسئلة -->
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <h3 id="modal-text">تحدي النشاط</h3>
-            <div style="display: flex; gap: 8px; margin-top: 15px;">
-                <button class="btn btn-saudi" onclick="addScore(10)">إجابة صحيحة (+10)</button>
-                <button class="btn btn-danger" onclick="closeModal()">إغلاق</button>
-            </div>
-        </div>
+    <div class="ai-options">
+      <button class="btn btn-purple" onclick="setTask('summary', this)">📝 تلخيص</button>
+      <button class="btn btn-outline" onclick="setTask('questions', this)">❓ أسئلة إكمال</button>
+      <button class="btn btn-outline" onclick="setTask('points', this)">📌 نقاط</button>
     </div>
+    <button class="btn btn-pink" onclick="processContent()">معالجة المحتوى ✨</button>
+    <button class="btn btn-turq" onclick="generateGameBank()">توليد بنك أسئلة الألعاب 🧠</button>
 
-    <script>
-        let students = JSON.parse(localStorage.getItem('shaghaf_students')) || ["سارة", "نورة", "ريم", "عائشة"];
-        let score = parseInt(localStorage.getItem('shaghaf_score')) || 0;
-        let teacherInfo = JSON.parse(localStorage.getItem('shaghaf_teacher')) || { name: '', school: '', avatar: '👩‍🏫' };
-        let selectedRegion = localStorage.getItem('shaghaf_region') || 'western';
-        let currentAvatar = teacherInfo.avatar || '👩‍🏫';
-        let timer = 30;
-        let timerInterval = null;
-        let selectedTask = 'summary';
+    <div class="status-msg" id="aiStatus"></div>
+    <div style="margin-top:8px;"><div class="output-box" id="ai-output">النتيجة تظهر هنا...</div></div>
+  </div>
 
-        const days = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس"];
+  <footer>
+    حقيبة شغف الصفية 🌸 صُممت بحب لمعلمات المرحلة الابتدائية<br>
+    <span style="font-size:10.5px; opacity:.75;">الإصدار الأساسي — يعمل بالكامل على جهازك بدون إنترنت بعد التحميل الأول، بدون اشتراك أو مفتاح API.</span>
+  </footer>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
-        const calendarData = {
-            western: [
-                { title: "بداية الفصل الدراسي الأول (الغربية)", date: "1448/02/10 هـ" },
-                { title: "إجازة اليوم الوطني", date: "1448/03/12 هـ" },
-                { title: "إجازة نهاية أسبوع مطولة (خاصة بالحج والعمرة)", date: "1448/05/18 هـ" },
-                { title: "إجازة يوم التأسيس", date: "1448/08/14 هـ" },
-                { title: "بداية إجازة نهاية العام الدراسي", date: "1448/12/21 هـ" }
-            ],
-            others: [
-                { title: "بداية الفصل الدراسي الأول (باقي المناطق)", date: "1448/02/10 هـ" },
-                { title: "إجازة اليوم الوطني", date: "1448/03/12 هـ" },
-                { title: "إجازة منتصف العام الدراسي", date: "1448/06/22 هـ" },
-                { title: "إجازة يوم التأسيس", date: "1448/08/14 هـ" },
-                { title: "بداية إجازة نهاية العام الدراسي", date: "1448/12/28 هـ" }
-            ]
-        };
+<!-- Modal -->
+<div class="modal" id="game-modal">
+  <div class="modal-content">
+    <div class="game-screen" id="game-screen-content"></div>
+    <div class="modal-actions">
+      <button class="btn btn-green" onclick="addScore(10)">إجابة صحيحة (+10) 🌟</button>
+      <button class="btn btn-danger" onclick="closeGameModal()">إغلاق ✖️</button>
+    </div>
+  </div>
+</div>
 
-        window.onload = function() {
-            loadTeacherInfo();
-            renderStudents();
-            buildBoard();
-            buildSchedule();
-            
-            document.getElementById('region-select').value = selectedRegion;
-            updateCalendar();
+<script>
+/* ---------------- Safe persistent storage (no localStorage) ---------------- */
+let state = {
+  teacherInfo: { name:'', school:'', avatar:'👩‍🏫' },
+  students: ["سارة","نورة","ريم","عائشة","شهد","ليان"],
+  schedule: {},
+  region: 'western',
+  score: 0
+};
 
-            document.getElementById('score').innerText = score;
-        };
+function saveState(){
+  try{ localStorage.setItem('shaghaf-state', JSON.stringify(state)); }
+  catch(e){ console.warn('تعذر الحفظ التلقائي', e); }
+}
+async function loadState(){
+  try{
+    const raw = localStorage.getItem('shaghaf-state');
+    if(raw){ state = { ...state, ...JSON.parse(raw) }; }
+  }catch(e){ /* لا توجد بيانات محفوظة بعد — نستخدم القيم الافتراضية */ }
+}
 
-        function selectAvatar(emoji, el) {
-            currentAvatar = emoji;
-            document.querySelectorAll('.avatar-option').forEach(opt => opt.classList.remove('selected'));
-            el.classList.add('selected');
-        }
+/* ---------------- Init ---------------- */
+let currentAvatar = '👩‍🏫';
+let timer = 30, timerInterval = null;
+let selectedTask = 'summary';
+let gameQuestions = [];
+let gameQuestionIndex = 0;
 
-        function updateCalendar() {
-            const region = document.getElementById('region-select').value;
-            localStorage.setItem('shaghaf_region', region);
-            
-            const listContainer = document.getElementById('calendar-list');
-            listContainer.innerHTML = '';
+const days = ["الأحد","الإثنين","الثلاثاء","الأربعاء","الخميس"];
+const tagColors = ['var(--pink)','var(--purple)','var(--turq)','var(--gold)','var(--green)'];
 
-            const items = calendarData[region] || calendarData.western;
-            items.forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'calendar-item';
-                div.innerHTML = `<span>${item.title}</span><strong>${item.date}</strong>`;
-                listContainer.appendChild(div);
-            });
-        }
+const gamesList = [
+  { id:1, name:"عجلة التحديات", icon:"🎡" },
+  { id:2, name:"صندوق المفاجآت", icon:"🎁" },
+  { id:3, name:"إشارة المرور", icon:"🚦" },
+  { id:4, name:"سؤال إكمال", icon:"🧠" },
+  { id:5, name:"بطاقات الذاكرة", icon:"🎴" },
+  { id:6, name:"فك الشفرة", icon:"🔐" },
+  { id:7, name:"الكلمة المفقودة", icon:"💡" },
+  { id:8, name:"تحدي 5 ثواني", icon:"⚡" },
+  { id:9, name:"بطلة الفصل", icon:"👑" }
+];
 
-        function saveTeacherInfo() {
-            const name = document.getElementById('teacher-name-input').value.trim();
-            const school = document.getElementById('school-input').value.trim();
-            teacherInfo = { name, school, avatar: currentAvatar };
-            localStorage.setItem('shaghaf_teacher', JSON.stringify(teacherInfo));
-            loadTeacherInfo();
-        }
+const calendarData = {
+  western: [
+    { title:"بداية الفصل الدراسي الأول (الغربية)", date:"تقريبًا منتصف صفر" },
+    { title:"إجازة اليوم الوطني", date:"23 سبتمبر" },
+    { title:"إجازة موسم الحج والعمرة", date:"حسب تقويم الوزارة" },
+    { title:"إجازة يوم التأسيس", date:"22 فبراير" },
+    { title:"نهاية العام الدراسي", date:"حسب تقويم الوزارة" }
+  ],
+  others: [
+    { title:"بداية الفصل الدراسي الأول", date:"تقريبًا منتصف صفر" },
+    { title:"إجازة اليوم الوطني", date:"23 سبتمبر" },
+    { title:"إجازة منتصف العام الدراسي", date:"حسب تقويم الوزارة" },
+    { title:"إجازة يوم التأسيس", date:"22 فبراير" },
+    { title:"نهاية العام الدراسي", date:"حسب تقويم الوزارة" }
+  ]
+};
 
-        function loadTeacherInfo() {
-            if (teacherInfo.avatar) {
-                document.getElementById('avatar-display').innerText = teacherInfo.avatar;
-            }
-            if (teacherInfo.name || teacherInfo.school) {
-                document.getElementById('teacher-info').innerText = `المعلم/ـة: ${teacherInfo.name || 'غير محدد'} | المدرسة/المادة: ${teacherInfo.school || 'غير محددة'}`;
-                document.getElementById('setup-form').style.display = 'none';
-            }
-        }
+window.onload = async function(){
+  await loadState();
+  currentAvatar = state.teacherInfo.avatar || '👩‍🏫';
+  loadTeacherInfo();
+  renderStudents();
+  buildGamesBoard();
+  buildSchedule();
+  document.getElementById('region-select').value = state.region;
+  updateCalendar();
+  document.getElementById('score').innerText = state.score;
+  buildWheel();
+};
 
-        function buildSchedule() {
-            const tbody = document.getElementById('schedule-body');
-            tbody.innerHTML = '';
-            const savedSchedule = JSON.parse(localStorage.getItem('shaghaf_schedule')) || {};
+/* ---------------- Profile ---------------- */
+function selectAvatar(emoji, el){
+  currentAvatar = emoji;
+  document.querySelectorAll('.avatar-option').forEach(o=>o.classList.remove('selected'));
+  if(el) el.classList.add('selected');
+}
+function saveTeacherInfo(){
+  const name = document.getElementById('teacher-name-input').value.trim();
+  const school = document.getElementById('school-input').value.trim();
+  state.teacherInfo = { name, school, avatar: currentAvatar };
+  saveState();
+  loadTeacherInfo();
+}
+function loadTeacherInfo(){
+  const t = state.teacherInfo;
+  if(t.avatar) document.getElementById('avatar-display').innerText = t.avatar;
+  if(t.name || t.school){
+    document.getElementById('teacher-info').innerText = `المعلمة: ${t.name || 'غير محدد'} | المدرسة/المادة: ${t.school || 'غير محددة'}`;
+  }
+}
 
-            days.forEach(day => {
-                const tr = document.createElement('tr');
-                let rowHTML = `<td><strong>${day}</strong></td>`;
-                for (let h = 1; h <= 5; h++) {
-                    const key = `${day}_${h}`;
-                    const val = savedSchedule[key] || '';
-                    rowHTML += `<td><input type="text" id="${key}" value="${val}"></td>`;
-                }
-                tr.innerHTML = rowHTML;
-                tbody.appendChild(tr);
-            });
-        }
+/* ---------------- Wheel (main) ---------------- */
+const wheelColors = ['#FF6FA0','#8B5FBF','#20C4B6','#FFC93C','#06A77D','#ff8fb8','#a17fd6','#48d8cb'];
+let wheelNames = [];
+let wheelRotation = 0;
 
-        function saveSchedule() {
-            const schedule = {};
-            days.forEach(day => {
-                for (let h = 1; h <= 5; h++) {
-                    const key = `${day}_${h}`;
-                    schedule[key] = document.getElementById(key).value;
-                }
-            });
-            localStorage.setItem('shaghaf_schedule', JSON.stringify(schedule));
-            alert('تم حفظ جدول الحصص بنجاح في جهازك 💾');
-        }
+function buildWheel(){
+  wheelNames = state.students.length ? [...state.students] : ['أضيفي طالبات'];
+  const wheel = document.getElementById('wheel');
+  wheel.innerHTML = '';
+  const n = wheelNames.length;
+  const slice = 360/n;
+  const parts = wheelNames.map((name,i)=> `${wheelColors[i%wheelColors.length]} ${i*slice}deg ${(i+1)*slice}deg`);
+  wheel.style.background = `conic-gradient(${parts.join(',')})`;
+  wheelNames.forEach((name,i)=>{
+    const angle = slice*i + slice/2;
+    const label = document.createElement('span');
+    label.className = 'label';
+    label.textContent = name.length>8 ? name.slice(0,7)+'…' : name;
+    label.style.transform = `rotate(${angle}deg) translate(0,-32%) rotate(90deg)`;
+    wheel.appendChild(label);
+  });
+}
 
-        function renderStudents() {
-            const list = document.getElementById('students-list');
-            list.innerHTML = '';
-            students.forEach((std, index) => {
-                const tag = document.createElement('div');
-                tag.className = 'tag';
-                tag.innerHTML = `${std} <span onclick="removeStudent(${index})">&times;</span>`;
-                list.appendChild(tag);
-            });
-            localStorage.setItem('shaghaf_students', JSON.stringify(students));
-        }
+function spinMainWheel(){
+  if(!state.students.length){
+    document.getElementById('selected-student').innerText = 'أضيفي طالبات أولاً 👇';
+    return;
+  }
+  const n = wheelNames.length;
+  const slice = 360/n;
+  const winnerIndex = Math.floor(Math.random()*n);
+  const target = 5*360 + (360 - (winnerIndex*slice + slice/2));
+  wheelRotation += target;
+  document.getElementById('wheel').style.transform = `rotate(${wheelRotation}deg)`;
+  document.getElementById('selected-student').innerText = 'جارِ الاختيار...';
+  setTimeout(()=>{
+    document.getElementById('selected-student').innerText = `🎉 الطالبة: ${wheelNames[winnerIndex]}`;
+    startTimer();
+  }, 3700);
+}
 
-        function addStudent() {
-            const input = document.getElementById('student-name-input');
-            if (input.value.trim()) {
-                students.push(input.value.trim());
-                input.value = '';
-                renderStudents();
-            }
-        }
+/* ---------------- Games board ---------------- */
+function buildGamesBoard(){
+  const board = document.getElementById('games-board');
+  board.innerHTML = '';
+  gamesList.forEach((game,i)=>{
+    const btn = document.createElement('div');
+    btn.className = `game-card-btn c${i%4}`;
+    btn.onclick = ()=>openGame(game.id);
+    btn.innerHTML = `<div class="icon">${game.icon}</div><div class="title">${game.name}</div>`;
+    board.appendChild(btn);
+  });
+}
 
-        function removeStudent(index) {
-            students.splice(index, 1);
-            renderStudents();
-        }
+function openGame(gameId){
+  const modal = document.getElementById('game-modal');
+  const c = document.getElementById('game-screen-content');
+  modal.style.display = 'flex';
 
-        function pickRandomStudent() {
-            if (students.length === 0) {
-                document.getElementById('selected-student').innerText = "يرجى إضافة طالبات أولاً";
-                return;
-            }
-            let count = 0;
-            const interval = setInterval(() => {
-                const rand = Math.floor(Math.random() * students.length);
-                document.getElementById('selected-student').innerText = students[rand];
-                count++;
-                if (count > 10) {
-                    clearInterval(interval);
-                    startTimer();
-                }
-            }, 100);
-        }
+  if(gameId===1){
+    c.innerHTML = `<div class="game-title">🎡 عجلة التحديات</div>
+      <div class="game-display" id="wheel-target" style="font-size:1.2rem;">؟</div>
+      <button class="btn btn-gold" onclick="spinChallenge()">تدوير 🔄</button>`;
+  } else if(gameId===2){
+    c.innerHTML = `<div class="game-title">🎁 صندوق المفاجآت</div>
+      <div class="game-display" id="box-display" style="font-size:3.5rem; cursor:pointer;" onclick="openBox()">📦</div>
+      <p style="font-size:0.82rem; color:var(--ink-soft);">اضغطي على الصندوق!</p>`;
+  } else if(gameId===3){
+    c.innerHTML = `<div class="game-title">🚦 إشارة التصويت</div>
+      <div class="game-display" id="light-status">اختاري اللون للإجابة</div>
+      <div class="traffic-light">
+        <button class="light-btn" style="background:#ef4444;color:#fff;" onclick="setLight('إجابة خاطئة ❌','#fef2f2')">🛑</button>
+        <button class="light-btn" style="background:#22c55e;color:#fff;" onclick="setLight('إجابة صحيحة 🎯','#f0fdf4')">🟢</button>
+      </div>`;
+  } else if(gameId===4 || gameId===7){
+    renderBankQuestion(gameId===4 ? '🧠 سؤال إكمال' : '💡 الكلمة المفقودة');
+  } else if(gameId===5){
+    c.innerHTML = `<div class="game-title">🎴 كشف البطاقات</div>
+      <div style="display:flex; gap:10px;">
+        <button class="btn btn-purple" style="font-size:1.3rem;" onclick="flipCard(this,'⭐ وسام')">❓ 1</button>
+        <button class="btn btn-turq" style="font-size:1.3rem;" onclick="flipCard(this,'🎯 سؤال')">❓ 2</button>
+      </div>`;
+  } else if(gameId===6){
+    const code = Math.floor(1000 + Math.random()*9000);
+    c.innerHTML = `<div class="game-title">🔐 شفرة الدرس السرية</div>
+      <div class="game-display" style="font-size:2rem; letter-spacing:5px; color:var(--purple);">${code}</div>
+      <p style="font-size:0.82rem;">على الطالبة تجميع مفتاح السر!</p>`;
+  } else if(gameId===8){
+    c.innerHTML = `<div class="game-title">⚡ تحدي الـ5 ثواني</div>
+      <div class="game-display" id="fast-timer" style="font-size:2.4rem; color:var(--pink);">5</div>
+      <button class="btn btn-danger" onclick="startFastTimer()">ابدأ ⏱️</button>`;
+  } else if(gameId===9){
+    c.innerHTML = `<div class="game-title">👑 بطلة التعاون</div>
+      <div class="game-display">تختار الطالبة زميلة تساعدها، وتحصل كل منهما على +10 نقاط!</div>`;
+  }
+}
 
-        function startTimer() {
-            clearInterval(timerInterval);
-            timer = 30;
-            document.getElementById('timer').innerText = timer;
-            timerInterval = setInterval(() => {
-                timer--;
-                document.getElementById('timer').innerText = timer;
-                if (timer <= 0) clearInterval(timerInterval);
-            }, 1000);
-        }
+function renderBankQuestion(title){
+  const c = document.getElementById('game-screen-content');
+  if(!gameQuestions.length){
+    c.innerHTML = `<div class="game-title">${title}</div>
+      <div class="game-display">لا يوجد بنك أسئلة بعد ✨<br><span style="font-size:0.8rem; font-weight:500;">أضيفي محتوى الدرس في "مساعد المحتوى" واضغطي "توليد بنك أسئلة الألعاب"</span></div>`;
+    return;
+  }
+  const q = gameQuestions[gameQuestionIndex % gameQuestions.length];
+  c.innerHTML = `<div class="game-title">${title}</div>
+    <div class="game-display"><span>${q.question}</span></div>
+    <div style="display:flex; gap:8px; width:100%;">
+      <button class="btn btn-outline" style="margin-top:0;" onclick="revealAnswer()">👁️ إظهار الإجابة</button>
+      <button class="btn btn-turq" style="margin-top:0;" onclick="nextBankQuestion('${title}')">السؤال التالي ⏭️</button>
+    </div>`;
+}
+function revealAnswer(){
+  if(!gameQuestions.length) return;
+  const q = gameQuestions[gameQuestionIndex % gameQuestions.length];
+  alert('✅ الإجابة: ' + q.answer);
+}
+function nextBankQuestion(title){
+  gameQuestionIndex++;
+  renderBankQuestion(title);
+}
 
-        function buildBoard() {
-            const board = document.getElementById('board');
-            for (let i = 1; i <= 9; i++) {
-                const btn = document.createElement('button');
-                btn.className = 'grid-btn';
-                btn.innerText = i;
-                btn.onclick = () => openChallenge(btn, i);
-                board.appendChild(btn);
-            }
-        }
+function spinChallenge(){
+  const el = document.getElementById('wheel-target');
+  const items = ["سؤال مباشر ❓","نقاط مضاعفة 🎁","تحدي خاطف ⚡","مساعدة زميلة 🤝","تخطي السؤال ⏩"];
+  el.innerText = items[Math.floor(Math.random()*items.length)];
+}
+function openBox(){
+  const display = document.getElementById('box-display');
+  const gifts = ["🎉 +10 نقاط","⭐ وسام التميز","👏 تصفيقة من الفصل","🍬 بطاقة شكر"];
+  display.style.fontSize = "1.1rem";
+  display.innerText = gifts[Math.floor(Math.random()*gifts.length)];
+}
+function setLight(text, bg){
+  const el = document.getElementById('light-status');
+  el.innerText = text; el.style.background = bg;
+}
+function flipCard(btn, text){ btn.innerText = text; btn.style.background = "var(--purple)"; }
+function startFastTimer(){
+  let t = 5;
+  const display = document.getElementById('fast-timer');
+  display.innerText = t;
+  const inv = setInterval(()=>{
+    t--; display.innerText = t>0 ? t : "⏰ انتهى!";
+    if(t<=0) clearInterval(inv);
+  },1000);
+}
+function closeGameModal(){ document.getElementById('game-modal').style.display = 'none'; }
 
-        function openChallenge(btn, num) {
-            if (btn.classList.contains('disabled')) return;
-            document.getElementById('modal-text').innerText = `تحدي النشاط رقم (${num})`;
-            document.getElementById('modal').style.display = 'flex';
-            btn.classList.add('disabled');
-        }
+/* ---------------- Score & timer ---------------- */
+function addScore(pt){
+  state.score += pt;
+  document.getElementById('score').innerText = state.score;
+  const burst = document.getElementById('scoreBurst');
+  burst.classList.remove('play'); void burst.offsetWidth; burst.classList.add('play');
+  saveState();
+  closeGameModal();
+}
+function startTimer(){
+  clearInterval(timerInterval);
+  timer = 30;
+  document.getElementById('timer').innerText = timer;
+  timerInterval = setInterval(()=>{
+    timer--; document.getElementById('timer').innerText = timer>0?timer:0;
+    if(timer<=0) clearInterval(timerInterval);
+  },1000);
+}
 
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
+/* ---------------- Students ---------------- */
+function renderStudents(){
+  const list = document.getElementById('students-list');
+  list.innerHTML = '';
+  state.students.forEach((std,i)=>{
+    const tag = document.createElement('div');
+    tag.className = 'tag';
+    tag.style.background = tagColors[i % tagColors.length];
+    tag.innerHTML = `${std} <span onclick="removeStudent(${i})">&times;</span>`;
+    list.appendChild(tag);
+  });
+  buildWheel();
+  saveState();
+}
+function addStudent(){
+  const input = document.getElementById('student-name-input');
+  if(input.value.trim()){
+    state.students.push(input.value.trim());
+    input.value = '';
+    renderStudents();
+  }
+}
+function removeStudent(i){ state.students.splice(i,1); renderStudents(); }
 
-        function addScore(pt) {
-            score += pt;
-            document.getElementById('score').innerText = score;
-            localStorage.setItem('shaghaf_score', score);
-            closeModal();
-        }
+/* ---------------- Schedule ---------------- */
+function buildSchedule(){
+  const tbody = document.getElementById('schedule-body');
+  tbody.innerHTML = '';
+  days.forEach(day=>{
+    const tr = document.createElement('tr');
+    let html = `<td><strong>${day}</strong></td>`;
+    for(let h=1; h<=5; h++){
+      const key = `${day}_${h}`;
+      html += `<td><input type="text" id="sch-${key}" value="${(state.schedule[key]||'').replace(/"/g,'&quot;')}"></td>`;
+    }
+    tr.innerHTML = html;
+    tbody.appendChild(tr);
+  });
+}
+function saveSchedule(){
+  const schedule = {};
+  days.forEach(day=>{
+    for(let h=1; h<=5; h++){
+      const key = `${day}_${h}`;
+      schedule[key] = document.getElementById(`sch-${key}`).value;
+    }
+  });
+  state.schedule = schedule;
+  saveState();
+  const btn = event.target;
+  const original = btn.innerText;
+  btn.innerText = 'تم الحفظ ✅';
+  setTimeout(()=>{ btn.innerText = original; }, 1500);
+}
 
-        function readFile(input) {
-            const file = input.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('ai-input').value = e.target.result;
-                };
-                reader.readAsText(file);
-            }
-        }
+/* ---------------- Calendar ---------------- */
+function updateCalendar(){
+  const region = document.getElementById('region-select').value;
+  state.region = region;
+  saveState();
+  const list = document.getElementById('calendar-list');
+  list.innerHTML = '';
+  (calendarData[region]||calendarData.western).forEach(item=>{
+    const div = document.createElement('div');
+    div.className = 'calendar-item';
+    div.innerHTML = `<span>${item.title}</span><strong>${item.date}</strong>`;
+    list.appendChild(div);
+  });
+}
 
-        function setTask(task, btn) {
-            selectedTask = task;
-            document.querySelectorAll('.ai-opt-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        }
+/* ---------------- Content helper (rule-based, no AI, no internet needed) ---------------- */
+const arabicStopwords = new Set(["من","في","على","إلى","عن","مع","هذا","هذه","ذلك","التي","الذي","الذين","كان","كانت","يكون","تكون","أن","إن","لا","لم","لن","ما","هو","هي","هم","نحن","أنت","أنتم","قد","كل","بعض","أو","و","ثم","حتى","إذا","كما","بين","عند","عندما","بعد","قبل","فقط","أيضًا","أيضا","هناك"]);
 
-        function processAI() {
-            const text = document.getElementById('ai-input').value.trim();
-            const out = document.getElementById('ai-output');
-            if (!text) {
-                out.innerText = "⚠️ يرجى إدخال نص أو رفع ملف أولاً.";
-                return;
-            }
-            out.innerText = "⏳ جاري المعالجة...";
-            setTimeout(() => {
-                const lines = text.split(/[.\n]/).filter(l => l.trim().length > 0);
-                if (selectedTask === 'summary') {
-                    out.innerText = "📌 الملخص:\n" + lines.slice(0, Math.ceil(lines.length / 2)).join(".\n") + ".";
-                } else if (selectedTask === 'questions') {
-                    let q = "❓ الأسئلة المقترحة:\n";
-                    lines.slice(0, 3).forEach((l, i) => q += `${i+1}. س: وضح أبعاد/معنى: (${l.trim()})؟\n`);
-                    out.innerText = q;
-                } else {
-                    let p = "🔹 النقاط الرئيسية:\n";
-                    lines.forEach(l => p += `• ${l.trim()}\n`);
-                    out.innerText = p;
-                }
-            }, 400);
-        }
-    </script>
+document.getElementById('txt-input').addEventListener('change', (e)=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = ()=>{ document.getElementById('content-input').value = reader.result; document.getElementById('fileName').innerText = file.name; };
+  reader.onerror = ()=>{ setStatus('تعذّرت قراءة الملف، حاولي مرة أخرى', true); };
+  reader.readAsText(file, 'UTF-8');
+});
+
+document.getElementById('pdf-input').addEventListener('change', async (e)=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  const nameEl = document.getElementById('fileName');
+  nameEl.innerText = 'جارِ قراءة PDF...';
+  try{
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    const buf = await file.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: buf }).promise;
+    let fullText = '';
+    for(let p=1; p<=pdf.numPages; p++){
+      const page = await pdf.getPage(p);
+      const content = await page.getTextContent();
+      fullText += content.items.map(it=>it.str).join(' ') + '\n';
+    }
+    document.getElementById('content-input').value = fullText.trim();
+    nameEl.innerText = '📄 ' + file.name;
+  }catch(err){
+    nameEl.innerText = 'تعذّرت قراءة هذا الملف';
+  }
+});
+
+function setTask(task, btn){
+  selectedTask = task;
+  document.querySelectorAll('.ai-options .btn').forEach(b=>{ b.className='btn btn-outline'; });
+  btn.className = 'btn btn-purple';
+}
+function setStatus(msg, isError){
+  const el = document.getElementById('aiStatus');
+  el.innerText = msg;
+  el.className = 'status-msg ' + (isError ? 'error' : 'ok');
+}
+
+function splitSentences(text){
+  return text.split(/[.!؟\n]+/).map(s=>s.trim()).filter(s=>s.length>4);
+}
+
+function scoreSentences(sentences){
+  const freq = {};
+  sentences.forEach(s=>{
+    s.split(/\s+/).forEach(w=>{
+      const clean = w.replace(/[^\u0621-\u064A0-9a-zA-Z]/g,'');
+      if(clean.length>2 && !arabicStopwords.has(clean)) freq[clean] = (freq[clean]||0)+1;
+    });
+  });
+  return sentences.map(s=>{
+    const words = s.split(/\s+/).filter(w=>w.length>2);
+    const score = words.reduce((sum,w)=>{
+      const clean = w.replace(/[^\u0621-\u064A0-9a-zA-Z]/g,'');
+      return sum + (freq[clean]||0);
+    },0) / (words.length||1);
+    return { text:s, score };
+  });
+}
+
+function extractiveSummary(text, count){
+  const sentences = splitSentences(text);
+  if(!sentences.length) return [];
+  const scored = scoreSentences(sentences);
+  const top = [...scored].sort((a,b)=>b.score-a.score).slice(0,count);
+  return sentences.filter(s=>top.some(t=>t.text===s)).slice(0,count);
+}
+
+function makeFillBlankQuestions(text, count){
+  const sentences = splitSentences(text).filter(s=>s.split(/\s+/).length>=4);
+  const shuffled = [...sentences].sort(()=>Math.random()-0.5).slice(0,count);
+  return shuffled.map(s=>{
+    const words = s.split(/\s+/);
+    let idx = 0, longest = '';
+    words.forEach((w,i)=>{
+      const clean = w.replace(/[^\u0621-\u064A0-9a-zA-Z]/g,'');
+      if(clean.length>longest.length && !arabicStopwords.has(clean)){ longest = clean; idx = i; }
+    });
+    if(!longest) return null;
+    const blanked = [...words];
+    blanked[idx] = '______';
+    return { question: blanked.join(' '), answer: longest };
+  }).filter(Boolean);
+}
+
+function processContent(){
+  setStatus('', false);
+  const content = document.getElementById('content-input').value.trim();
+  if(!content){ setStatus('أدخلي محتوى الدرس أولاً', true); return; }
+  const out = document.getElementById('ai-output');
+
+  if(selectedTask==='summary'){
+    const points = extractiveSummary(content, 4);
+    out.innerText = points.length ? points.map(p=>'• '+p).join('\n') : 'النص قصير جدًا للتلخيص.';
+  } else if(selectedTask==='questions'){
+    const qs = makeFillBlankQuestions(content, 5);
+    out.innerText = qs.length ? qs.map((q,i)=>`${i+1}. ${q.question}\n   ✅ الإجابة: ${q.answer}`).join('\n\n') : 'أضيفي محتوى أطول لتوليد أسئلة إكمال.';
+  } else {
+    const points = extractiveSummary(content, 6);
+    out.innerText = points.length ? points.map(p=>'• '+p).join('\n') : 'النص قصير جدًا لاستخراج نقاط.';
+  }
+  setStatus('تمت المعالجة ✅', false);
+}
+
+function generateGameBank(){
+  setStatus('', false);
+  const content = document.getElementById('content-input').value.trim();
+  if(!content){ setStatus('أدخلي محتوى الدرس أولاً', true); return; }
+  const qs = makeFillBlankQuestions(content, 6);
+  const out = document.getElementById('ai-output');
+  if(!qs.length){ out.innerText = 'أضيفي محتوى أطول لتوليد بنك أسئلة.'; setStatus('احتجنا محتوى أطول', true); return; }
+  gameQuestions = qs;
+  gameQuestionIndex = 0;
+  out.innerText = '✅ تم توليد ' + qs.length + ' سؤال إكمال! افتحي "سؤال إكمال" أو "الكلمة المفقودة" من مركز الألعاب.';
+  setStatus('بنك الأسئلة جاهز 🎉', false);
+}
+
+/* ---------------- Global safety net ---------------- */
+window.addEventListener('error', function(e){
+  console.warn('تم رصد خطأ غير متوقع وتم تجاهله بأمان:', e.message);
+});
+</script>
 </body>
 </html>
