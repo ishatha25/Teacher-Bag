@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة شغف | الحقيبة الذكية للمعلم العصري</title>
+    <!-- Fonts: Cairo & Readex Pro & Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Readex+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #059669;
+            --primary-dark: #047857;
+            --primary-light: #ecfdf5;
+            --accent: #f59e0b;
+            --accent-hover: #d97706;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-sub: #475569;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 8px 15px -6px rgba(0, 0, 0, 0.05);
+            --font-head: 'Cairo', sans-serif;
+            --font-body: 'Readex Pro', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Modern Styling */
+        header {
+            background: linear-gradient(135deg, #059669, #022c22);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .brand-icon {
+            width: 55px;
+            height: 55px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+
+        .brand-text h1 {
+            font-family: var(--font-head);
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #ffffff, #fef08a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-text p {
+            font-size: 0.88rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        /* Buttons with Modern Typography */
+        .smart-btn {
+            border: none;
+            padding: 12px 22px;
+            border-radius: var(--radius-md);
+            font-family: var(--font-head);
+            font-weight: 800;
+            font-size: 1.05rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .smart-btn:hover { transform: translateY(-2px); }
+        .smart-btn:active { transform: translateY(0) scale(0.97); }
+
+        .btn-gold { background: var(--accent); color: #422006; }
+        .btn-gold:hover { background: #fbe042; }
+        .btn-ghost { background: rgba(255,255,255,0.18); color: white; backdrop-filter: blur(4px); }
+        .btn-ghost:hover { background: rgba(255,255,255,0.3); }
+        .btn-action { background: var(--primary); color: white; }
+        .btn-action:hover { background: var(--primary-dark); }
+        .btn-danger { background: #ef4444; color: white; }
+
+        /* Navigation Bar */
+        nav {
+            background: white;
+            padding: 0.8rem 2rem;
+            display: flex;
+            gap: 20px;
+            border-bottom: 2px solid #e2e8f0;
+            justify-content: center;
+        }
+
+        .nav-tab {
+            padding: 12px 28px;
+            border: none;
+            background: transparent;
+            font-family: var(--font-head);
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text-sub);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-tab:hover { background: #f1f5f9; color: var(--primary); }
+        .nav-tab.active {
+            background: var(--primary-light);
+            color: var(--primary);
+            border: 2px solid rgba(5, 150, 105, 0.2);
+        }
+
+        /* Workspace */
+        main {
+            flex: 1;
+            padding: 2.5rem 2rem;
+            max-width: 1300px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .tab-pane { display: none; }
+        .tab-pane.active { display: block; animation: fadeIn 0.3s ease-out; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Student Grid Cards */
+        .students-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 22px;
+            margin-top: 25px;
+        }
+
+        .student-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 22px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 2px solid #f1f5f9;
+            transition: all 0.25s ease;
+        }
+
+        .student-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px -5px rgba(5, 150, 105, 0.12);
+        }
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #dbeafe, #e0e7ff);
+            color: #2563eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 12px;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.15);
+        }
+
+        .student-name {
+            font-family: var(--font-head);
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .points-badge {
+            font-family: var(--font-head);
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin: 8px 0;
+        }
+
+        .quick-rewards {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .reward-btn {
+            border: none;
+            background: #f1f5f9;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .reward-btn:hover { transform: scale(1.2); background: #fef08a; }
+
+        /* Random Wheel & Timer Boxes */
+        .smart-box {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 3.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid #f1f5f9;
+        }
+
+        .picker-display {
+            font-family: var(--font-head);
+            font-size: 3.8rem;
+            font-weight: 900;
+            color: var(--primary-dark);
+            padding: 3rem;
+            background: var(--primary-light);
+            border: 4px dashed var(--primary);
+            border-radius: var(--radius-lg);
+            margin: 25px 0;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .big-timer {
+            font-size: 6rem;
+            font-weight: 900;
+            color: #0f172a;
+            font-family: monospace;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 28px;
+            border: 2px solid #e2e8f0;
+            margin: 25px 0;
+            letter-spacing: 6px;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 1.4rem 2.2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+            max-width: 520px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 14px 20px;
+            border: 2px solid #cbd5e1;
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        input[type="text"]:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.15); }
+
+        #confettiCanvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="confettiCanvas"></canvas>
+
+    <!-- Top Header -->
+    <header>
+        <div class="brand">
+            <div class="brand-icon"><i class="fa-solid fa-sparkles"></i></div>
+            <div class="brand-text">
+                <h1>منصة شغف | SHAGHAF 🚀</h1>
+                <p>الحقيبة الصفية الذكية للمعلم السعودي العصري</p>
+            </div>
+        </div>
+        <div class="quick-actions">
+            <button class="smart-btn btn-gold" onclick="SoundModule.playWin(); SoundModule.launchConfetti();"><i class="fa-solid fa-star"></i> احتفال ممتاز!</button>
+            <button class="smart-btn btn-ghost" id="saveBtn"><i class="fa-solid fa-cloud-arrow-up"></i> حفظ</button>
+            <button class="smart-btn btn-ghost" id="resetBtn"><i class="fa-solid fa-rotate"></i> جديد</button>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav>
+        <button class="nav-tab active" data-tab="tab-students"><i class="fa-solid fa-face-smile-beam"></i> لوحة النجوم والتحفيز</button>
+        <button class="nav-tab" data-tab="tab-picker"><i class="fa-solid fa-wand-magic-sparkles"></i> القرعة الذكية</button>
+        <button class="nav-tab" data-tab="tab-timer"><i class="fa-solid fa-stopwatch"></i> مؤقت التحدي</button>
+    </nav>
+
+    <main>
+        <!-- Tab 1: Reward System -->
+        <section id="tab-students" class="tab-pane active">
+            <div class="panel-header">
+                <div class="input-row">
+                    <input type="text" id="studentInput" placeholder="أدخل اسم الطالب المبدع هنا...">
+                    <button class="smart-btn btn-action" id="addBtn"><i class="fa-solid fa-user-plus"></i> إضافة طالب</button>
+                </div>
+                <div>
+                    <span style="font-family: var(--font-head); font-weight: 800; color: var(--text-sub);">إجمالي الأبطال: </span>
+                    <strong id="studentCount" style="font-size: 1.6rem; color: var(--primary);">0</strong>
+                </div>
+            </div>
+
+            <div id="studentsContainer" class="students-grid"></div>
+        </section>
+
+        <!-- Tab 2: Smart Random Picker -->
+        <section id="tab-picker" class="tab-pane">
+            <div class="smart-box">
+                <h2 style="font-family: var(--font-head); font-size: 2rem; color: var(--primary-dark);"><i class="fa-solid fa-dice"></i> من المبدع الذي سيشارك معنا الآن؟</h2>
+                <div id="pickerDisplay" class="picker-display">اضغط ابدأ السحب 🎯</div>
+                <button class="smart-btn btn-gold" id="startPickerBtn" style="font-size: 1.5rem; padding: 18px 50px; border-radius: 50px;">
+                    <i class="fa-solid fa-play"></i> ابدأ السحب العشوائي
+                </button>
+            </div>
+        </section>
+
+        <!-- Tab 3: Interactive Timer -->
+        <section id="tab-timer" class="tab-pane">
+            <div class="smart-box">
+                <h2 style="font-family: var(--font-head); font-size: 2rem; color: var(--text-main);"><i class="fa-solid fa-clock"></i> مؤقت الأنشطة والمهام الصفية</h2>
+                <div id="bigTimer" class="big-timer">03:00</div>
+                <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 25px;">
+                    <button class="smart-btn btn-action" onclick="TimerModule.start()"><i class="fa-solid fa-play"></i> تشغيل</button>
+                    <button class="smart-btn btn-gold" onclick="TimerModule.pause()"><i class="fa-solid fa-pause"></i> إيقاف مؤقت</button>
+                    <button class="smart-btn btn-danger" onclick="TimerModule.reset()"><i class="fa-solid fa-rotate-left"></i> إعادة</button>
+                </div>
+                <div style="display: flex; justify-content: center; gap: 12px;">
+                    <button class="smart-btn btn-ghost" style="color: var(--text-main); border: 2px solid #e2e8f0;" onclick="TimerModule.setPreset(1)">⏱️ دقيقة</button>
+                    <button class="smart-btn btn-ghost" style="color: var(--text-main); border: 2px solid #e2e8f0;" onclick="TimerModule.setPreset(3)">⏱️ 3 دقائق</button>
+                    <button class="smart-btn btn-ghost" style="color: var(--text-main); border: 2px solid #e2e8f0;" onclick="TimerModule.setPreset(5)">⏱️ 5 دقائق</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const SoundModule = {
+            ctx: null,
+            init() { if(!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)(); },
+            playReward() {
+                this.init();
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.connect(gain); gain.connect(this.ctx.destination);
+                osc.frequency.setValueAtTime(523.25, this.ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(880, this.ctx.currentTime + 0.2);
+                gain.gain.setValueAtTime(0.3, this.ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.2);
+                osc.start(); osc.stop(this.ctx.currentTime + 0.2);
+            },
+            playWin() {
+                this.init();
+                [261.63, 329.63, 392.00, 523.25].forEach((freq, idx) => {
+                    setTimeout(() => {
+                        const osc = this.ctx.createOscillator();
+                        const gain = this.ctx.createGain();
+                        osc.connect(gain); gain.connect(this.ctx.destination);
+                        osc.frequency.value = freq;
+                        gain.gain.setValueAtTime(0.3, this.ctx.currentTime);
+                        gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.3);
+                        osc.start(); osc.stop(this.ctx.currentTime + 0.3);
+                    }, idx * 100);
+                });
+            },
+            launchConfetti() {
+                const canvas = document.getElementById('confettiCanvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+                const pieces = Array.from({length: 90}).map(() => ({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    size: Math.random() * 10 + 5,
+                    color: ['#f59e0b', '#059669', '#10b981', '#ef4444', '#06b6d4'][Math.floor(Math.random()*5)],
+                    speed: Math.random() * 5 + 3
+                }));
+
+                function draw() {
+                    ctx.clearRect(0,0,canvas.width,canvas.height);
+                    pieces.forEach(p => {
+                        ctx.fillStyle = p.color;
+                        ctx.fillRect(p.x, p.y, p.size, p.size);
+                        p.y += p.speed;
+                        if(p.y > canvas.height) p.y = -20;
+                    });
+                }
+                let animId = setInterval(draw, 20);
+                setTimeout(() => { clearInterval(animId); ctx.clearRect(0,0,canvas.width,canvas.height); }, 2500);
+            }
+        };
+
+        let students = JSON.parse(localStorage.getItem('shaghaf_students')) || [
+            { id: 1, name: 'سارة خالد', points: 3 },
+            { id: 2, name: 'عمر الفهد', points: 5 },
+            { id: 3, name: 'فهد العتيبي', points: 2 }
+        ];
+
+        function renderStudents() {
+            const container = document.getElementById('studentsContainer');
+            container.innerHTML = '';
+            document.getElementById('studentCount').textContent = students.length;
+
+            students.forEach(st => {
+                const card = document.createElement('div');
+                card.className = 'student-card';
+                card.innerHTML = `
+                    <div class="avatar"><i class="fa-solid fa-child"></i></div>
+                    <div class="student-name">${st.name}</div>
+                    <div class="points-badge">⭐ ${st.points}</div>
+                    <div class="quick-rewards">
+                        <button class="reward-btn" onclick="addPoint(${st.id}, 1)" title="إضافة نجمة">⭐</button>
+                        <button class="reward-btn" onclick="addPoint(${st.id}, 2)" title="وسام تفوق">🏅</button>
+                        <button class="reward-btn" onclick="addPoint(${st.id}, -1)" title="تنبيه">-1</button>
+                        <button class="reward-btn" onclick="deleteStudent(${st.id})" title="حذف">🗑️</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function addPoint(id, pts) {
+            const st = students.find(s => s.id === id);
+            if(st) {
+                st.points = Math.max(0, st.points + pts);
+                if(pts > 0) SoundModule.playReward();
+                saveData(); renderStudents();
+            }
+        }
+
+        function deleteStudent(id) {
+            students = students.filter(s => s.id !== id);
+            saveData(); renderStudents();
+        }
+
+        function saveData() {
+            localStorage.setItem('shaghaf_students', JSON.stringify(students));
+        }
+
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        document.getElementById('addBtn').addEventListener('click', () => {
+            const input = document.getElementById('studentInput');
+            if(input.value.trim()) {
+                students.push({ id: Date.now(), name: input.value.trim(), points: 0 });
+                input.value = '';
+                saveData(); renderStudents();
+            }
+        });
+
+        document.getElementById('saveBtn').addEventListener('click', () => {
+            saveData(); alert('تم حفظ كافة البيانات بنجاح في منصة شغف! 💾');
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            if(confirm('هل تريد بدء فصل جديد ومسح الطلاب الحاليين؟')) {
+                students = []; saveData(); renderStudents();
+            }
+        });
+
+        document.getElementById('startPickerBtn').addEventListener('click', () => {
+            if(students.length === 0) return alert('يرجى إضافة طلاب أولاً!');
+            const disp = document.getElementById('pickerDisplay');
+            let count = 0;
+            const timer = setInterval(() => {
+                const rand = students[Math.floor(Math.random() * students.length)];
+                disp.textContent = rand.name;
+                count++;
+                if(count > 18) {
+                    clearInterval(timer);
+                    SoundModule.playWin(); SoundModule.launchConfetti();
+                }
+            }, 80);
+        });
+
+        const TimerModule = {
+            totalSecs: 180, currSecs: 180, timerId: null,
+            updateDisplay() {
+                const m = Math.floor(this.currSecs / 60);
+                const s = this.currSecs % 60;
+                document.getElementById('bigTimer').textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+            },
+            start() {
+                if(this.timerId) return;
+                this.timerId = setInterval(() => {
+                    if(this.currSecs > 0) { this.currSecs--; this.updateDisplay(); }
+                    else { this.pause(); SoundModule.playWin(); SoundModule.launchConfetti(); }
+                }, 1000);
+            },
+            pause() { clearInterval(this.timerId); this.timerId = null; },
+            reset() { this.pause(); this.currSecs = this.totalSecs; this.updateDisplay(); },
+            setPreset(min) { this.pause(); this.totalSecs = min * 60; this.currSecs = min * 60; this.updateDisplay(); }
+        };
+
+        renderStudents();
+    </script>
+</body>
+</html>
